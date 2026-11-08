@@ -1,0 +1,30 @@
+[submodule "third_party/rea"]
+	path = third_party/rea
+	url = https://github.com/morluto/rea.git
+[submodule "third_party/awesome-reverse-engineering"]
+	path = third_party/awesome-reverse-engineering
+	url = https://github.com/edwardtay/awesome-reverse-engineering.git
+[submodule "third_party/radare2"]
+	path = third_party/radare2
+	url = https://github.com/radareorg/radare2.git
+[submodule "third_party/rizin"]
+	path = third_party/rizin
+	url = https://github.com/rizinorg/rizin.git
+[submodule "third_party/jadx"]
+	path = third_party/jadx
+	url = https://github.com/skylot/jadx.git
+[submodule "third_party/apktool"]
+	path = third_party/apktool
+	url = https://github.com/iBotPeaches/Apktool.git
+[submodule "third_party/frida"]
+	path = third_party/frida
+	url = https://github.com/frida/frida.git
+[submodule "third_party/androguard"]
+	path = third_party/androguard
+	url = https://github.com/androguard/androguard.git
+[submodule "third_party/angr"]
+	path = third_party/angr
+	url = https://github.com/angr/angr.git
+[submodule "third_party/binwalk"]
+	path = third_party/binwalk
+	url = https://github.com/ReFirmLabs/binwalk.git
