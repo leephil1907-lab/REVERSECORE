@@ -18,4 +18,6 @@ REVERSECORE references upstream projects as Git submodules pinned to exact commi
 
 ## Licensing
 
-Exact pinned revisions are listed in [UPSTREAM_LOCK.md](UPSTREAM_LOCK.md). Ghidra is deliberately excluded from the default submodule set because its checkout is large; use `WITH_GHIDRA=1 bash scripts/import-upstreams.sh` to fetch it locally.\n\nEach upstream repository has its own license and notices. Check the current upstream `LICENSE`, `NOTICE`, and contribution/security documents before redistributing binaries, source, or modified versions. This index is not a grant of rights.
+Exact pinned revisions are listed in [UPSTREAM_LOCK.md](UPSTREAM_LOCK.md). Ghidra is deliberately excluded from the default submodule set because its checkout is large; use `WITH_GHIDRA=1 bash scripts/import-upstreams.sh` to fetch it locally.
+
+Each upstream repository has its own license and notices. Check the current upstream `LICENSE`, `NOTICE`, and contribution/security documents before redistributing binaries, source, or modified versions. This index is not a grant of rights.
