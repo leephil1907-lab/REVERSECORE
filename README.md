@@ -40,6 +40,27 @@ npx rea-agents@latest setup
 
 Review the setup plan before approving it, then restart your coding agent. REA setup modifies your local agent configuration; it does not run automatically as part of the import script.
 
+## REVERSECORE engine
+
+A first local analysis engine is included. It provides SHA-256 hashing, file identification, sampled entropy, printable-string extraction, basic ELF metadata, and ZIP/APK/JAR inventory and safe extraction.
+
+Install and run it:
+
+```bash
+python -m pip install -e .
+reversecore inspect ./sample.bin --json
+reversecore archive ./application.apk
+reversecore extract ./application.apk ./work/extracted
+```
+
+Or run directly without installing:
+
+```bash
+python -m reversecore.cli inspect ./sample.bin --json
+```
+
+See [docs/ENGINE.md](docs/ENGINE.md) for details and current limitations.
+
 ## Repository layout
 
 ```text
@@ -65,4 +86,4 @@ REVERSECORE/
 
 ## Status
 
-The repository contains the workspace scaffold and repeatable import process. Run the bootstrap script on a machine with Git and network access to download the upstream source trees into `third_party/`.
+The repository now includes the workspace scaffold, a dependency-free Python static inspection CLI, tests, and the repeatable upstream import process. Run the bootstrap script on a machine with Git and network access to download upstream source trees into local `third_party/` directories.
