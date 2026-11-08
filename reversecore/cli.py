@@ -11,6 +11,7 @@ from .analysis import inspect_file
 from .archive import inventory_zip, safe_extract_zip
 from .apk import inspect_apk
 from .binary_formats import parse_dex, parse_elf, parse_macho, parse_pe
+from .integrations import discover_tools
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reversecore", description="Local-first static inspection for authorized analysis.")
@@ -25,6 +26,7 @@ def build_parser() -> argparse.ArgumentParser:
     apk = sub.add_parser("apk", help="inspect Android APK structure and DEX strings")
     apk.add_argument("target")
     apk.add_argument("--json", action="store_true")
+    sub.add_parser("tools", help="list optional reverse-engineering tools detected on PATH")
     parse = sub.add_parser("parse", help="parse PE, ELF, Mach-O or DEX metadata")
     parse.add_argument("target")
     parse.add_argument("--format", choices=["auto", "pe", "elf", "macho", "dex"], default="auto")
@@ -36,7 +38,9 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> int:
     args = build_parser().parse_args()
     try:
-        if args.command == "inspect":
+        if args.command == "tools":
+            print(json.dumps(discover_tools(), indent=2))
+        elif args.command == "inspect":
             result = inspect_file(args.target, include_strings=not args.no_strings)
             if args.json:
                 print(json.dumps(result, indent=2))
