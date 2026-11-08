@@ -10,6 +10,7 @@ from pathlib import Path
 from .analysis import inspect_file
 from .archive import inventory_zip, safe_extract_zip
 from .apk import inspect_apk
+from .binary_formats import parse_dex, parse_elf, parse_macho, parse_pe
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reversecore", description="Local-first static inspection for authorized analysis.")
@@ -24,6 +25,9 @@ def build_parser() -> argparse.ArgumentParser:
     apk = sub.add_parser("apk", help="inspect Android APK structure and DEX strings")
     apk.add_argument("target")
     apk.add_argument("--json", action="store_true")
+    parse = sub.add_parser("parse", help="parse PE, ELF, Mach-O or DEX metadata")
+    parse.add_argument("target")
+    parse.add_argument("--format", choices=["auto", "pe", "elf", "macho", "dex"], default="auto")
     extract = sub.add_parser("extract", help="extract a ZIP/APK/JAR to a destination")
     extract.add_argument("target")
     extract.add_argument("destination")
@@ -47,6 +51,14 @@ def main() -> int:
         elif args.command == "apk":
             result = inspect_apk(args.target)
             print(json.dumps(result, indent=2) if args.json else json.dumps(result, indent=2))
+        elif args.command == "parse":
+            fmt = args.format
+            if fmt == "auto":
+                with open(args.target, "rb") as handle:
+                    magic = handle.read(4)
+                fmt = "pe" if magic[:2] == b"MZ" else "elf" if magic == b"\\x7fELF" else "dex" if magic.startswith(b"dex\\n") else "macho"
+            parser = {"pe": parse_pe, "elf": parse_elf, "macho": parse_macho, "dex": parse_dex}[fmt]
+            print(json.dumps({"target": str(Path(args.target).resolve()), "analysis": parser(args.target)}, indent=2))
         elif args.command == "extract":
             written = safe_extract_zip(args.target, args.destination)
             print(f"Extracted {len(written)} files to {Path(args.destination).resolve()}")
