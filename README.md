@@ -20,15 +20,17 @@ REVERSECORE is a curated workspace for understanding software behavior, analyzin
 | angr | Binary analysis framework | https://github.com/angr/angr |
 | Binwalk | Firmware analysis and extraction | https://github.com/ReFirmLabs/binwalk |
 
-Upstream projects are fetched as shallow Git clones by the bootstrap script. Their original licenses, histories, maintainers, and contribution rules remain with their respective projects.
+Ten upstream projects are tracked as Git submodules pinned to reviewed commit IDs. Clone with `--recurse-submodules` or run the bootstrap script to fetch them. Their original licenses, histories, maintainers, and contribution rules remain with their respective projects.
 
 ## Quick start
 
 Requirements: Git, Bash, and (for REA) Node.js 22.19+ / 24.11+ / 26+ with npm.
 
 ```bash
-git clone https://github.com/leephil1907-lab/REVERSECORE.git
+git clone --recurse-submodules https://github.com/leephil1907-lab/REVERSECORE.git
 cd REVERSECORE
+# If you cloned without --recurse-submodules:
+git submodule update --init --depth 1 --recursive
 bash scripts/import-upstreams.sh
 ```
 
@@ -89,7 +91,7 @@ REVERSECORE/
 - Optional integrations are documented in [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md).
 - Format coverage and known gaps are listed in [docs/FORMATS.md](docs/FORMATS.md).
 - Security assumptions and limitations are in [docs/SECURITY.md](docs/SECURITY.md).
-- The imported upstream source trees are not stored in Git; run the import script locally to fetch them.
+- The upstream code is maintained in its original repositories and referenced through pinned Git submodules; it is fetched into `third_party/` when submodules are initialized. Ghidra remains an optional large checkout.
 
 ## Working principles
 
