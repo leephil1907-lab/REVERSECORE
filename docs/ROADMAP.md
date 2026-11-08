@@ -6,6 +6,9 @@
 - [x] Static file identification and SHA-256
 - [x] Printable strings and sampled entropy
 - [x] Basic ELF metadata
+- [x] Bounds-checked PE, ELF, Mach-O and DEX metadata parsers
+- [x] Reproducible case manifests and evidence notes
+- [x] Optional external tool detection
 - [x] ZIP/APK/JAR inventory and safe extraction
 - [x] Unit tests and CI workflow
 - [x] Termux setup helper
