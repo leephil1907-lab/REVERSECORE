@@ -24,7 +24,8 @@
 - [x] Optional tool capability detection and version capture
 - [x] Structured case manifest and append-only evidence notes
 - [ ] Optional adapters for Ghidra, radare2, Rizin, JADX, Frida and Binwalk
-- [ ] Reproducible HTML/JSON/PDF reports
+- [x] Reproducible HTML/JSON reports
+- [ ] PDF reports
 
 ## Phase 4 — Product interface
 - [ ] Local API and job queue
