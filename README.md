@@ -50,6 +50,8 @@ Install and run it:
 python -m pip install -e .
 reversecore inspect ./sample.bin --json
 reversecore apk ./application.apk --json
+reversecore parse ./native-library.so
+reversecore tools
 reversecore archive ./application.apk
 reversecore extract ./application.apk ./work/extracted
 ```
@@ -60,7 +62,7 @@ Or run directly without installing:
 python -m reversecore.cli inspect ./sample.bin --json
 ```
 
-See [docs/ENGINE.md](docs/ENGINE.md) for details and current limitations.
+See [docs/ENGINE.md](docs/ENGINE.md) for details and current limitations, and [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md) for optional specialist tools.
 
 ## Repository layout
 
