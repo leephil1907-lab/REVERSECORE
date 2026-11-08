@@ -22,3 +22,18 @@
 .env.*
 !.env.example
 .DS_Store
+
+# Python build and test artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Local REVERSECORE investigation cases
+/cases/
