@@ -13,6 +13,7 @@ from .apk import inspect_apk
 from .binary_formats import parse_dex, parse_elf, parse_macho, parse_pe
 from .integrations import discover_tools
 from .casefile import create_case, add_note
+from .report import write_report
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reversecore", description="Local-first static inspection for authorized analysis.")
@@ -34,6 +35,10 @@ def build_parser() -> argparse.ArgumentParser:
     case_note = sub.add_parser("case-note", help="append an analyst note to a case evidence log")
     case_note.add_argument("case_dir")
     case_note.add_argument("note")
+    report = sub.add_parser("report", help="export a standalone HTML or JSON inspection report")
+    report.add_argument("target")
+    report.add_argument("output")
+    report.add_argument("--format", choices=["html", "json"], default="html")
     parse = sub.add_parser("parse", help="parse PE, ELF, Mach-O or DEX metadata")
     parse.add_argument("target")
     parse.add_argument("--format", choices=["auto", "pe", "elf", "macho", "dex"], default="auto")
@@ -50,6 +55,9 @@ def main() -> int:
             print(json.dumps(result, indent=2))
         elif args.command == "case-note":
             print(json.dumps(add_note(args.case_dir, args.note), indent=2))
+        elif args.command == "report":
+            destination = write_report(args.target, args.output, args.format)
+            print(f"Report written to {destination}")
         elif args.command == "tools":
             print(json.dumps(discover_tools(), indent=2))
         elif args.command == "inspect":
