@@ -13,11 +13,14 @@ def inventory_zip(path: str | Path) -> list[dict[str, Any]]:
             for item in archive.infolist()
         ]
 
-def safe_extract_zip(path: str | Path, destination: str | Path) -> list[str]:
+def safe_extract_zip(path: str | Path, destination: str | Path, max_total_bytes: int = 512 * 1024 * 1024) -> list[str]:
     target = Path(destination).expanduser().resolve()
     target.mkdir(parents=True, exist_ok=True)
     written: list[str] = []
     with zipfile.ZipFile(path) as archive:
+        total_size = sum(item.file_size for item in archive.infolist() if not item.is_dir())
+        if total_size > max_total_bytes:
+            raise ValueError(f"archive expands to {total_size} bytes; limit is {max_total_bytes}")
         for item in archive.infolist():
             member = PurePosixPath(item.filename)
             if member.is_absolute() or ".." in member.parts:
