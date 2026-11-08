@@ -29,8 +29,6 @@ Requirements: Git, Bash, and (for REA) Node.js 22.19+ / 24.11+ / 26+ with npm.
 ```bash
 git clone --recurse-submodules https://github.com/leephil1907-lab/REVERSECORE.git
 cd REVERSECORE
-# If you cloned without --recurse-submodules:
-git submodule update --init --depth 1 --recursive
 bash scripts/import-upstreams.sh
 ```
 
@@ -81,7 +79,7 @@ REVERSECORE/
 ├── pyproject.toml
 ├── LICENSE
 ├── CONTRIBUTING.md
-└── third_party/               # local upstream clones; intentionally ignored by Git
+└── third_party/               # pinned Git submodules (initialized locally)
 ```
 
 ## Platform notes
@@ -91,7 +89,8 @@ REVERSECORE/
 - Optional integrations are documented in [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md).
 - Format coverage and known gaps are listed in [docs/FORMATS.md](docs/FORMATS.md).
 - Security assumptions and limitations are in [docs/SECURITY.md](docs/SECURITY.md).
-- The upstream code is maintained in its original repositories and referenced through pinned Git submodules; it is fetched into `third_party/` when submodules are initialized. Ghidra remains an optional large checkout.
+- The upstream code is maintained in its original repositories and referenced through pinned Git submodules; source files are fetched into `third_party/` when submodules are initialized. Ghidra remains an optional large checkout.
+- If you already cloned without submodules, run `git submodule update --init --depth 1 --recursive`.
 
 ## Working principles
 
