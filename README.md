@@ -49,6 +49,7 @@ Install and run it:
 ```bash
 python -m pip install -e .
 reversecore inspect ./sample.bin --json
+reversecore apk ./application.apk --json
 reversecore archive ./application.apk
 reversecore extract ./application.apk ./work/extracted
 ```
