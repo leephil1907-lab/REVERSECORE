@@ -56,7 +56,7 @@ def main() -> int:
             if fmt == "auto":
                 with open(args.target, "rb") as handle:
                     magic = handle.read(4)
-                fmt = "pe" if magic[:2] == b"MZ" else "elf" if magic == b"\\x7fELF" else "dex" if magic.startswith(b"dex\\n") else "macho"
+                fmt = "pe" if magic[:2] == b"MZ" else "elf" if magic == bytes([127]) + b"ELF" else "dex" if magic.startswith(b"dex" + bytes([10])) else "macho"
             parser = {"pe": parse_pe, "elf": parse_elf, "macho": parse_macho, "dex": parse_dex}[fmt]
             print(json.dumps({"target": str(Path(args.target).resolve()), "analysis": parser(args.target)}, indent=2))
         elif args.command == "extract":
