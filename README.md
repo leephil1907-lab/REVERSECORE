@@ -105,3 +105,14 @@ REVERSECORE/
 ## Status
 
 The repository now includes the workspace scaffold, a dependency-free Python static inspection CLI, tests, and the repeatable upstream import process. Run the bootstrap script on a machine with Git and network access to download upstream source trees into local `third_party/` directories.
+
+
+## Website
+
+A modern, responsive project website lives in [`website/`](website/). Preview it locally from the repository root:
+
+```bash
+python -m http.server 8080 --directory website
+```
+
+Then open `http://localhost:8080`. The static site can be deployed by publishing the `website/` directory on a static host; see [website/README.md](website/README.md).
