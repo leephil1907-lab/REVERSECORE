@@ -14,6 +14,7 @@ REVERSECORE is a curated workspace for understanding software behavior, analyzin
 | radare2 | Scriptable binary analysis framework | https://github.com/radareorg/radare2 |
 | Rizin | Reverse-engineering framework and libraries | https://github.com/rizinorg/rizin |
 | JADX | Android DEX/APK decompiler | https://github.com/skylot/jadx |
+| Apktool | Android APK resources and manifest tooling | https://github.com/iBotPeaches/Apktool |
 | Frida | Dynamic instrumentation toolkit | https://github.com/frida/frida |
 | Androguard | Android application analysis toolkit | https://github.com/androguard/androguard |
 | angr | Binary analysis framework | https://github.com/angr/angr |
