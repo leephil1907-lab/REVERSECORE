@@ -33,6 +33,7 @@ import_repo "awesome-reverse-engineering" "https://github.com/edwardtay/awesome-
 import_repo "radare2" "https://github.com/radareorg/radare2.git"
 import_repo "rizin" "https://github.com/rizinorg/rizin.git"
 import_repo "jadx" "https://github.com/skylot/jadx.git"
+import_repo "apktool" "https://github.com/iBotPeaches/Apktool.git"
 import_repo "frida" "https://github.com/frida/frida.git"
 import_repo "androguard" "https://github.com/androguard/androguard.git"
 import_repo "angr" "https://github.com/angr/angr.git"
