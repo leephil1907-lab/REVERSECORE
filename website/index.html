@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080b0a">
+  <meta name="description" content="REVERSECORE is a local-first reverse engineering toolkit for inspecting binaries, Android packages and software artifacts.">
+  <title>REVERSECORE — Understand Anything</title>
+  <link rel="icon" href="./assets/reversecore-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="REVERSECORE home"><img src="./assets/reversecore-mark.svg" alt=""><span>REVERSE<span>CORE</span><small>UNDERSTAND ANYTHING. REVERSE ENGINEER EVERYTHING.</small></span></a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><i></i><i></i></button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a><a href="#capabilities">Capabilities</a><a href="#workflow">Workflow</a><a href="#toolkit">Toolkit</a><a href="#docs">Documentation</a>
+    </nav>
+    <a class="header-cta" href="#quickstart">Get started <span>↗</span></a>
+  </header>
+
+  <main id="home">
+    <section class="hero section-wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> LOCAL-FIRST REVERSE ENGINEERING</div>
+        <h1>Understand what<br>software <em>hides.</em></h1>
+        <p class="hero-lede">A focused environment for inspecting binaries, understanding application packages, and turning technical evidence into reproducible findings.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#quickstart">Explore REVERSECORE <span>↗</span></a><a class="button button-quiet" href="#capabilities">Discover the toolkit <span>↓</span></a></div>
+        <div class="hero-meta"><span><b></b> Python 3.10+</span><span>Open-source foundations</span><span>Built for reproducibility</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Abstract REVERSECORE analysis core illustration">
+        <div class="visual-grid"></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="core-shadow"></div><div class="core-cube"><div class="cube-face cube-front"><img src="./assets/reversecore-mark.svg" alt="REVERSECORE mark"></div><div class="cube-face cube-side"></div><div class="cube-face cube-top"></div></div>
+        <div class="scan-line"></div>
+        <div class="float-card card-pe"><span>01 / FORMAT</span><strong>PE · ELF · Mach-O</strong><small>Binary metadata</small></div>
+        <div class="float-card card-apk"><span>02 / MOBILE</span><strong>APK · DEX</strong><small>Package inventory</small></div>
+        <div class="float-card card-hash"><span>03 / EVIDENCE</span><strong>SHA-256</strong><small>Traceable artifacts</small></div>
+        <div class="visual-label">ANALYSIS CORE <b>ONLINE</b></div>
+      </div>
+    </section>
+
+    <section class="signal-strip section-wrap" aria-label="Platform highlights">
+      <div><span class="signal-icon">⌘</span><strong>Static-first analysis</strong><small>Inspect before execution</small></div>
+      <div><span class="signal-icon">⌬</span><strong>Multi-format support</strong><small>PE, ELF, Mach-O, DEX</small></div>
+      <div><span class="signal-icon">⌁</span><strong>Evidence-led reports</strong><small>Hashes, notes and exports</small></div>
+      <div><span class="signal-icon">↗</span><strong>Extensible toolkit</strong><small>Connect specialist tools</small></div>
+    </section>
+
+    <section class="section-wrap capabilities" id="capabilities">
+      <div class="section-heading"><div><div class="eyebrow">BUILT FOR DEEP INSPECTION</div><h2>One workspace. <em>Clearer answers.</em></h2></div><p>Start with a dependable local engine, then bring in specialist tooling when the investigation calls for it.</p></div>
+      <div class="capability-grid">
+        <article class="cap-card cap-large"><div class="cap-top"><span class="cap-index">01 / INSPECT</span><span class="cap-symbol">⌕</span></div><h3>See inside the file.</h3><p>Identify formats, calculate SHA-256, sample entropy and extract printable strings without executing the artifact.</p><div class="code-window"><div class="window-bar"><i></i><i></i><i></i><span>reversecore · inspect</span></div><pre><span>$</span> reversecore inspect sample.bin
+<span class="code-muted">format</span>     ELF 64-bit
+<span class="code-muted">sha256</span>     8f2c…a91d
+<span class="code-muted">entropy</span>    6.84 bits / byte
+<span class="code-green">✓ inspection complete</span></pre></div></article>
+        <article class="cap-card"><div class="cap-top"><span class="cap-index">02 / PARSE</span><span class="cap-symbol">⌬</span></div><h3>Understand formats.</h3><p>Read structural metadata from PE, ELF, Mach-O and DEX files with bounds-checked parsers.</p><a href="#toolkit" class="text-link">Explore format support <span>↗</span></a></article>
+        <article class="cap-card"><div class="cap-top"><span class="cap-index">03 / ANDROID</span><span class="cap-symbol">▣</span></div><h3>Unpack the package.</h3><p>Inventory APK contents, inspect DEX metadata and locate native libraries and manifest data.</p><a href="#toolkit" class="text-link">Explore APK analysis <span>↗</span></a></article>
+        <article class="cap-card"><div class="cap-top"><span class="cap-index">04 / PRESERVE</span><span class="cap-symbol">◈</span></div><h3>Keep findings reproducible.</h3><p>Create case folders with hash manifests, environment details, append-only notes and exportable reports.</p><a href="#workflow" class="text-link">See the workflow <span>↗</span></a></article>
+      </div>
+    </section>
+
+    <section class="workflow-section" id="workflow"><div class="section-wrap workflow-inner">
+      <div class="workflow-copy"><div class="eyebrow">A TRACEABLE PROCESS</div><h2>From unknown artifact<br>to <em>documented evidence.</em></h2><p>REVERSECORE keeps the first steps straightforward and leaves room for deeper investigation with the tools you already trust.</p><a class="button button-primary" href="#quickstart">Start with the CLI <span>↗</span></a></div>
+      <div class="workflow-steps"><div class="step"><span>01</span><div><h3>Identify</h3><p>Fingerprint the file and record its cryptographic hash.</p></div><b>✓</b></div><div class="step"><span>02</span><div><h3>Inspect</h3><p>Parse supported structures and gather useful metadata.</p></div><b>✓</b></div><div class="step"><span>03</span><div><h3>Investigate</h3><p>Bring in optional specialist tools for deeper analysis.</p></div><b>↗</b></div><div class="step"><span>04</span><div><h3>Document</h3><p>Preserve notes and export a shareable evidence report.</p></div><b>✓</b></div></div>
+    </div></section>
+
+    <section class="section-wrap toolkit" id="toolkit">
+      <div class="section-heading"><div><div class="eyebrow">THE ECOSYSTEM</div><h2>Powerful tools. <em>Connected thoughtfully.</em></h2></div><p>Upstream projects remain independently maintained and are referenced through pinned Git submodules.</p></div>
+      <div class="tool-list"><a href="https://github.com/NationalSecurityAgency/ghidra"><span class="tool-mark">G</span><span><b>Ghidra</b><small>Disassembly and decompilation</small></span><span class="tool-arrow">↗</span></a><a href="https://github.com/radareorg/radare2"><span class="tool-mark">r2</span><span><b>radare2</b><small>Scriptable binary analysis</small></span><span class="tool-arrow">↗</span></a><a href="https://github.com/skylot/jadx"><span class="tool-mark">J</span><span><b>JADX</b><small>Android DEX decompiler</small></span><span class="tool-arrow">↗</span></a><a href="https://github.com/frida/frida"><span class="tool-mark">F</span><span><b>Frida</b><small>Dynamic instrumentation</small></span><span class="tool-arrow">↗</span></a><a href="https://github.com/androguard/androguard"><span class="tool-mark">A</span><span><b>Androguard</b><small>Android application analysis</small></span><span class="tool-arrow">↗</span></a><a href="https://github.com/angr/angr"><span class="tool-mark">∴</span><span><b>angr</b><small>Binary analysis framework</small></span><span class="tool-arrow">↗</span></a></div>
+      <p class="tool-note">Also integrated in the upstream collection: Rizin, Apktool, Binwalk, REA and the Awesome Reverse Engineering index.</p>
+    </section>
+
+    <section class="quickstart-section" id="quickstart"><div class="section-wrap quickstart">
+      <div><div class="eyebrow">GET STARTED IN MINUTES</div><h2>Your next investigation<br>starts <em>right here.</em></h2><p>Clone the repository, initialize the pinned upstream projects, and install the local analysis engine.</p><div class="platform-tags"><span>Linux</span><span>macOS</span><span>Windows + WSL</span><span>Android · Termux</span></div></div>
+      <div class="install-card"><div class="install-head"><span>QUICK START</span><span class="ready-dot">● READY</span></div><pre id="install-command">git clone --recurse-submodules https://github.com/leephil1907-lab/REVERSECORE.git
+cd REVERSECORE
+bash scripts/import-upstreams.sh
+python -m pip install -e .
+reversecore inspect ./sample.bin</pre><button class="copy-button" id="copy-command">Copy commands <span>▣</span></button><div class="install-foot">Python 3.10+ <span>·</span> Standard library core <span>·</span> Local-first</div></div>
+    </div></section>
+
+    <section class="section-wrap docs-cta" id="docs"><div><div class="eyebrow">GO DEEPER</div><h2>Good analysis starts with <em>good foundations.</em></h2><p>Read the architecture, format coverage, security model and practical setup guides.</p></div><div class="docs-links"><a href="https://github.com/leephil1907-lab/REVERSECORE/blob/main/docs/ARCHITECTURE.md">Architecture <span>↗</span></a><a href="https://github.com/leephil1907-lab/REVERSECORE/blob/main/docs/FORMATS.md">Format support <span>↗</span></a><a href="https://github.com/leephil1907-lab/REVERSECORE/blob/main/docs/SECURITY.md">Security notes <span>↗</span></a><a href="https://github.com/leephil1907-lab/REVERSECORE/blob/main/docs/ANDROID-TERMUX.md">Termux setup <span>↗</span></a></div></section>
+  </main>
+  <footer class="site-footer"><a class="brand footer-brand" href="#home"><img src="./assets/reversecore-mark.svg" alt=""><span>REVERSE<span>CORE</span><small>UNDERSTAND ANYTHING. REVERSE ENGINEER EVERYTHING.</small></span></a><div class="footer-links"><a href="https://github.com/leephil1907-lab/REVERSECORE">GitHub</a><a href="#docs">Documentation</a><a href="https://github.com/leephil1907-lab/REVERSECORE/blob/main/LICENSE">License</a><a href="https://github.com/leephil1907-lab/REVERSECORE/blob/main/CONTRIBUTING.md">Contribute</a></div><small>© <span id="year"></span> REVERSECORE. Built for curious minds.</small></footer>
+  <script src="./app.js"></script>
+</body>
+</html>
