@@ -9,6 +9,7 @@ from pathlib import Path
 
 from .analysis import inspect_file
 from .archive import inventory_zip, safe_extract_zip
+from .apk import inspect_apk
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reversecore", description="Local-first static inspection for authorized analysis.")
@@ -20,6 +21,9 @@ def build_parser() -> argparse.ArgumentParser:
     archive = sub.add_parser("archive", help="list ZIP/APK/JAR archive contents")
     archive.add_argument("target")
     archive.add_argument("--json", action="store_true")
+    apk = sub.add_parser("apk", help="inspect Android APK structure and DEX strings")
+    apk.add_argument("target")
+    apk.add_argument("--json", action="store_true")
     extract = sub.add_parser("extract", help="extract a ZIP/APK/JAR to a destination")
     extract.add_argument("target")
     extract.add_argument("destination")
@@ -40,6 +44,9 @@ def main() -> int:
             print(json.dumps(result, indent=2) if args.json else "\n".join(
                 f"{'DIR ' if row['is_directory'] else 'FILE'} {row['size_bytes']:>10}  {row['name']}" for row in result
             ))
+        elif args.command == "apk":
+            result = inspect_apk(args.target)
+            print(json.dumps(result, indent=2) if args.json else json.dumps(result, indent=2))
         elif args.command == "extract":
             written = safe_extract_zip(args.target, args.destination)
             print(f"Extracted {len(written)} files to {Path(args.destination).resolve()}")
