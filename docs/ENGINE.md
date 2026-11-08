@@ -7,6 +7,7 @@ The first engine release is a dependency-free Python CLI intended for local use.
 ```bash
 python -m reversecore.cli inspect ./sample.bin --json
 python -m reversecore.cli inspect ./sample.bin --no-strings
+python -m reversecore.cli apk ./application.apk --json
 python -m reversecore.cli archive ./application.apk
 python -m reversecore.cli extract ./application.apk ./work/extracted
 ```
@@ -20,6 +21,7 @@ After installation with `python -m pip install -e .`, use the `reversecore` comm
 - ASCII and UTF-16LE printable-string extraction.
 - Basic ELF class, byte order and machine-ID metadata.
 - ZIP/APK/JAR inventory and path-traversal-resistant extraction.
+- APK manifest presence/format, DEX file hashes and string samples, native-library inventory, and asset counts.
 
 ## Boundaries
 
