@@ -10,6 +10,7 @@ REVERSECORE tracks upstream projects rather than republishing their source. The 
 | `third_party/radare2` | [radareorg/radare2](https://github.com/radareorg/radare2) | Binary analysis framework |
 | `third_party/rizin` | [rizinorg/rizin](https://github.com/rizinorg/rizin) | Binary analysis framework |
 | `third_party/jadx` | [skylot/jadx](https://github.com/skylot/jadx) | Android DEX/APK decompiler |
+| `third_party/apktool` | [iBotPeaches/Apktool](https://github.com/iBotPeaches/Apktool) | Android APK resource and manifest tooling |
 | `third_party/frida` | [frida/frida](https://github.com/frida/frida) | Dynamic instrumentation |
 | `third_party/androguard` | [androguard/androguard](https://github.com/androguard/androguard) | Android analysis |
 | `third_party/angr` | [angr/angr](https://github.com/angr/angr) | Program analysis |
