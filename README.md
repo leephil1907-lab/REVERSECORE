@@ -42,7 +42,7 @@ Review the setup plan before approving it, then restart your coding agent. REA s
 
 ## REVERSECORE engine
 
-A first local analysis engine is included. It provides SHA-256 hashing, file identification, sampled entropy, printable-string extraction, basic ELF metadata, and ZIP/APK/JAR inventory and safe extraction.
+The local analysis engine provides SHA-256 hashing, file identification, sampled entropy, printable-string extraction, metadata parsers for PE/ELF/Mach-O/DEX, Android APK inventory, safe archive extraction, reproducible case manifests, evidence notes, and optional toolchain discovery.
 
 Install and run it:
 
@@ -52,6 +52,8 @@ reversecore inspect ./sample.bin --json
 reversecore apk ./application.apk --json
 reversecore parse ./native-library.so
 reversecore tools
+reversecore case-init ./sample.bin ./cases/sample-001
+reversecore case-note ./cases/sample-001 'Reviewed headers; no execution performed.'
 reversecore archive ./application.apk
 reversecore extract ./application.apk ./work/extracted
 ```
