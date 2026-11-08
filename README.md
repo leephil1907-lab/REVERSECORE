@@ -1,0 +1,68 @@
+# REVERSECORE
+
+**Reverse engineering research and tooling workspace.**
+
+REVERSECORE is a curated workspace for understanding software behavior, analyzing binaries and application packages, inspecting runtime behavior, and documenting reproducible findings. It brings together the official REA agent toolkit and selected open-source reverse-engineering projects without copying their code into this repository.
+
+## Included upstream projects
+
+| Project | Purpose | Upstream |
+|---|---|---|
+| REA | Agent-driven reverse engineering over MCP/CLI | https://github.com/morluto/rea |
+| Awesome Reverse Engineering | Curated tool and learning index | https://github.com/edwardtay/awesome-reverse-engineering |
+| Ghidra | Native binary disassembly and decompilation | https://github.com/NationalSecurityAgency/ghidra |
+| radare2 | Scriptable binary analysis framework | https://github.com/radareorg/radare2 |
+| Rizin | Reverse-engineering framework and libraries | https://github.com/rizinorg/rizin |
+| JADX | Android DEX/APK decompiler | https://github.com/skylot/jadx |
+| Frida | Dynamic instrumentation toolkit | https://github.com/frida/frida |
+| Androguard | Android application analysis toolkit | https://github.com/androguard/androguard |
+| angr | Binary analysis framework | https://github.com/angr/angr |
+| Binwalk | Firmware analysis and extraction | https://github.com/ReFirmLabs/binwalk |
+
+Upstream projects are fetched as shallow Git clones by the bootstrap script. Their original licenses, histories, maintainers, and contribution rules remain with their respective projects.
+
+## Quick start
+
+Requirements: Git, Bash, and (for REA) Node.js 22.19+ / 24.11+ / 26+ with npm.
+
+```bash
+git clone https://github.com/leephil1907-lab/REVERSECORE.git
+cd REVERSECORE
+bash scripts/import-upstreams.sh
+```
+
+Then set up REA with your coding agent:
+
+```bash
+cd third_party/rea
+npx rea-agents@latest setup
+```
+
+Review the setup plan before approving it, then restart your coding agent. REA setup modifies your local agent configuration; it does not run automatically as part of the import script.
+
+## Repository layout
+
+```text
+REVERSECORE/
+├── README.md
+├── THIRD_PARTY.md
+├── .gitignore
+├── scripts/
+│   └── import-upstreams.sh
+├── docs/
+│   └── WORKFLOW.md
+└── third_party/             # populated by the import script; not committed
+```
+
+## Working principles
+
+1. Analyze only software, devices, accounts, and data you own or are authorized to examine.
+2. Prefer static inspection before executing an unknown artifact.
+3. Use isolated test environments for runtime analysis.
+4. Preserve hashes, tool versions, commands, and evidence for reproducibility.
+5. Treat decompiler output and AI-generated explanations as hypotheses until verified against evidence.
+6. Respect each upstream project's license and security policy.
+
+## Status
+
+The repository contains the workspace scaffold and repeatable import process. Run the bootstrap script on a machine with Git and network access to download the upstream source trees into `third_party/`.
