@@ -14,15 +14,15 @@
 - [x] Termux setup helper
 
 ## Phase 2 — Format adapters
-- [ ] PE header and section parser
+- [x] PE header and section metadata parser
 - [ ] Mach-O load-command parser
-- [ ] DEX/APK manifest and component report
+- [ ] Binary Android manifest decoding and component report
 - [ ] ELF section, symbol and dependency report
 - [ ] Firmware filesystem inventory
 
 ## Phase 3 — Analysis orchestration
-- [ ] Tool capability detection and version capture
-- [ ] Structured job manifests and evidence logs
+- [x] Optional tool capability detection and version capture
+- [x] Structured case manifest and append-only evidence notes
 - [ ] Optional adapters for Ghidra, radare2, Rizin, JADX, Frida and Binwalk
 - [ ] Reproducible HTML/JSON/PDF reports
 
