@@ -86,7 +86,10 @@ def inspect_file(path_value: str | Path, include_strings: bool = True) -> dict[s
             "machine_id": struct.unpack("<H" if head[5] == 1 else ">H", head[18:20])[0] if head[5] in (1, 2) else None,
         }
     if include_strings:
-        data = path.read_bytes()
+        with path.open("rb") as handle:
+            data = handle.read(8 * 1024 * 1024)
         result["strings_sample"] = extract_strings(data)
         result["strings_count_sampled"] = len(result["strings_sample"])
+        result["strings_scanned_bytes"] = len(data)
+        result["strings_scan_truncated"] = stat.st_size > len(data)
     return result
