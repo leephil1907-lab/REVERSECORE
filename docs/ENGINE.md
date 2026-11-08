@@ -9,6 +9,8 @@ python -m reversecore.cli inspect ./sample.bin --json
 python -m reversecore.cli inspect ./sample.bin --no-strings
 python -m reversecore.cli apk ./application.apk --json
 python -m reversecore.cli parse ./native-library.so
+python -m reversecore.cli report ./sample.bin ./reports/sample.html
+python -m reversecore.cli report ./sample.bin ./reports/sample.json --format json
 python -m reversecore.cli tools
 python -m reversecore.cli case-init ./sample.bin ./cases/sample-001
 python -m reversecore.cli case-note ./cases/sample-001 'Reviewed headers; no execution performed.'
@@ -26,6 +28,7 @@ After installation with `python -m pip install -e .`, use the `reversecore` comm
 - Bounds-checked metadata parsing for PE/PE32+, ELF32/ELF64, Mach-O thin/fat, and standard DEX headers/string tables.
 - Optional toolchain discovery for Ghidra, radare2, Rizin, JADX, Frida, Androguard, angr, Binwalk, and apktool.
 - Reproducible case intake with environment metadata, SHA-256 manifest, intake report, and append-only JSONL analyst notes.
+- Standalone HTML and JSON report export with HTML escaping for extracted strings.
 - ZIP extraction is limited to 512 MiB of expanded data by default.
 - ZIP/APK/JAR inventory and path-traversal-resistant extraction.
 - APK manifest presence/format, DEX file hashes and string samples, native-library inventory, and asset counts.
