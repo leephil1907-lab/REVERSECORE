@@ -1,4 +1,4 @@
-# Imported upstream repositories are fetched locally by scripts/import-upstreams.sh
+# Upstream source checkouts are managed as Git submodules, not vendored files.
 /third_party/
 
 # Local analysis artifacts and samples
