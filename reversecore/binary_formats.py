@@ -70,7 +70,10 @@ def parse_elf(path: str | Path) -> dict[str, Any]:
         elf_type, machine, version, entry, phoff, shoff, flags, ehsize, phentsize, phnum, shentsize, shnum, shstrndx = fields
         word = 8
     sections = []
+    minimum_section_size = 40 if word == 4 else 64
     if shnum and shentsize:
+        if shentsize < minimum_section_size:
+            raise FormatError("ELF section-header entry size is too small")
         _need(data, shoff, shentsize * shnum, "ELF section table")
         for index in range(shnum):
             off = shoff + index * shentsize
