@@ -70,15 +70,25 @@ See [docs/ENGINE.md](docs/ENGINE.md) for details and current limitations, and [d
 
 ```text
 REVERSECORE/
-├── README.md
-├── THIRD_PARTY.md
-├── .gitignore
-├── scripts/
-│   └── import-upstreams.sh
-├── docs/
-│   └── WORKFLOW.md
-└── third_party/             # populated by the import script; not committed
+├── reversecore/              # Python analysis engine and CLI
+├── tests/                    # parser, archive and case tests
+├── scripts/                  # upstream and Termux setup helpers
+├── docs/                     # architecture, formats, security and usage
+├── .github/workflows/        # automated test workflow
+├── pyproject.toml
+├── LICENSE
+├── CONTRIBUTING.md
+└── third_party/               # local upstream clones; intentionally ignored by Git
 ```
+
+## Platform notes
+
+- The core supports Python 3.10+ and uses only the standard library.
+- Termux instructions are in [docs/ANDROID-TERMUX.md](docs/ANDROID-TERMUX.md).
+- Optional integrations are documented in [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md).
+- Format coverage and known gaps are listed in [docs/FORMATS.md](docs/FORMATS.md).
+- Security assumptions and limitations are in [docs/SECURITY.md](docs/SECURITY.md).
+- The imported upstream source trees are not stored in Git; run the import script locally to fetch them.
 
 ## Working principles
 
