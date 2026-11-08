@@ -9,6 +9,7 @@
 - APK inventory, DEX string triage and native-library listing.
 - ZIP inventory and path-traversal-resistant extraction with expanded-size limit.
 - Reproducible case intake, JSON manifest, intake report and append-only analyst notes.
+- Standalone HTML and JSON report export.
 - Optional external tool detection.
 - Termux setup helper, unit tests and Python 3.10–3.13 GitHub Actions matrix.
 - Architecture, security, format, integration and workflow documentation.
