@@ -32,4 +32,4 @@ After installation with `python -m pip install -e .`, use the `reversecore` comm
 
 ## Boundaries
 
-This version does not execute target files, bypass protections, modify binaries, or claim full format parsing. PE, Mach-O, DEX, firmware and native disassembly integrations are planned adapters. Treat every sample as untrusted and work on copies in an isolated environment.
+This version does not execute target files, bypass protections, modify binaries, decode binary Android XML, or perform disassembly. The built-in PE, ELF, Mach-O and DEX parsers return selected metadata rather than complete format validation. Firmware analysis and automated native-tool adapters remain future work. Treat every sample as untrusted and work on copies in an isolated environment.
