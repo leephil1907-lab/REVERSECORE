@@ -1,6 +1,6 @@
 # Third-party projects
 
-REVERSECORE tracks upstream projects rather than republishing their source. The import script clones the repositories into the local `third_party/` directory.
+REVERSECORE references upstream projects as Git submodules pinned to exact commits. Initialize them with `git submodule update --init --depth 1 --recursive` or run `bash scripts/import-upstreams.sh`. The source histories and licenses remain with upstream maintainers.
 
 | Local directory | Upstream repository | Role |
 |---|---|---|
@@ -18,4 +18,4 @@ REVERSECORE tracks upstream projects rather than republishing their source. The 
 
 ## Licensing
 
-Each upstream repository has its own license and notices. Check the current upstream `LICENSE`, `NOTICE`, and contribution/security documents before redistributing binaries, source, or modified versions. This index is not a grant of rights.
+Exact pinned revisions are listed in [UPSTREAM_LOCK.md](UPSTREAM_LOCK.md). Ghidra is deliberately excluded from the default submodule set because its checkout is large; use `WITH_GHIDRA=1 bash scripts/import-upstreams.sh` to fetch it locally.\n\nEach upstream repository has its own license and notices. Check the current upstream `LICENSE`, `NOTICE`, and contribution/security documents before redistributing binaries, source, or modified versions. This index is not a grant of rights.
