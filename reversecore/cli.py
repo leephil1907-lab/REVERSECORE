@@ -12,6 +12,7 @@ from .archive import inventory_zip, safe_extract_zip
 from .apk import inspect_apk
 from .binary_formats import parse_dex, parse_elf, parse_macho, parse_pe
 from .integrations import discover_tools
+from .casefile import create_case, add_note
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="reversecore", description="Local-first static inspection for authorized analysis.")
@@ -27,6 +28,12 @@ def build_parser() -> argparse.ArgumentParser:
     apk.add_argument("target")
     apk.add_argument("--json", action="store_true")
     sub.add_parser("tools", help="list optional reverse-engineering tools detected on PATH")
+    case_init = sub.add_parser("case-init", help="create a reproducible analysis case from a local file")
+    case_init.add_argument("target")
+    case_init.add_argument("output_dir")
+    case_note = sub.add_parser("case-note", help="append an analyst note to a case evidence log")
+    case_note.add_argument("case_dir")
+    case_note.add_argument("note")
     parse = sub.add_parser("parse", help="parse PE, ELF, Mach-O or DEX metadata")
     parse.add_argument("target")
     parse.add_argument("--format", choices=["auto", "pe", "elf", "macho", "dex"], default="auto")
@@ -38,7 +45,12 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> int:
     args = build_parser().parse_args()
     try:
-        if args.command == "tools":
+        if args.command == "case-init":
+            result = create_case(args.target, args.output_dir)
+            print(json.dumps(result, indent=2))
+        elif args.command == "case-note":
+            print(json.dumps(add_note(args.case_dir, args.note), indent=2))
+        elif args.command == "tools":
             print(json.dumps(discover_tools(), indent=2))
         elif args.command == "inspect":
             result = inspect_file(args.target, include_strings=not args.no_strings)
